@@ -49,3 +49,11 @@ We need to extract the url base out of the response and make a request to fetch 
 ```
 curl --location --request GET 'https://cn.bing.com/th?id=OHR.SalzburgKrampus_EN-US9186815435_UHD.jpg'
 ```
+
+# Script to set env vars in postman
+```
+const responseJson = xml2Json(pm.response.text());
+const baseUrl = responseJson.images.image.urlBase;
+console.log(baseUrl);
+pm.environment.set("base-url", baseUrl+"_UHD.jpg");
+```
